@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 	<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
-	<script src="/resource/js/controllers.js"></script>
 <title>Produkty</title>
 </head>
 <body>
@@ -21,7 +20,7 @@
 	<section class="container" ng-app="cartApp">
 		<div class="row">
 		<div class="col-md-5">
-	<img src="<c:url value="/resource/images/${product.productId}.png"></c:url>" alt="image"  style = "width:100%"/>
+	<img src="<c:url value="/resources/images/${product.productId}.png"></c:url>" alt="image"  style = "width:100%"/>
 </div>
 		
 			<div class="col-md-5">
@@ -35,9 +34,6 @@
 				</p>
 				<p>
 					<strong>Kategoria</strong>: ${product.category}
-				</p>
-				<p>
-					<strong>Stan</strong>: ${product.condition}
 				</p>
 				<p>
 					<strong>Liczba sztuk w magazynie</strong>: ${product.unitsInStock}
