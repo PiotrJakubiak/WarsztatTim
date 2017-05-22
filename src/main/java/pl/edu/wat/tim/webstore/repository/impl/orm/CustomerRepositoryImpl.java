@@ -22,7 +22,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     @SuppressWarnings("unchecked")
     @Override
     public List<Customer> getAllCustomers() {
-        String hql = "FROM Customer as cust ORDER BY cust.customerId";
+        String hql = "FROM Customer as cust";
         return (List<Customer>) entityManager.createQuery(hql).getResultList();
     }
 

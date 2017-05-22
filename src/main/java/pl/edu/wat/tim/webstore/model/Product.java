@@ -1,5 +1,10 @@
 package pl.edu.wat.tim.webstore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 
 /**
@@ -8,6 +13,8 @@ import java.math.BigDecimal;
 public class Product {
 
     private int productId;
+
+    @NotEmpty
     private String name;
     private BigDecimal unitPrice;
     private String description;
@@ -15,7 +22,8 @@ public class Product {
     private String category;
     private long unitsInStock;
     private long unitsInOrder;
-
+    @JsonIgnore
+    private MultipartFile productImage;
 
     public int getProductId() {
         return productId;
@@ -82,5 +90,13 @@ public class Product {
         this.unitsInOrder = unitsInOrder;
     }
 
+    @XmlTransient
+    public MultipartFile getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(MultipartFile productImage) {
+        this.productImage = productImage;
+    }
 
 }

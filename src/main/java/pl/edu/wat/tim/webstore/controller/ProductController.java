@@ -2,6 +2,7 @@ package pl.edu.wat.tim.webstore.controller;
 
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.multipart.MultipartFile;
 import pl.edu.wat.tim.webstore.model.Product;
 import pl.edu.wat.tim.webstore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Created by Piotr on 09.05.2017.
@@ -24,6 +30,8 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    private static String UPLOADED_FOLDER = "D:\\Uczelnia\\Studia magisterskie\\TIM-Warsztat\\springboot-jsp-master\\src\\main\\webapp\\resources\\images";
 
     @RequestMapping
     public String list(Model model) {
@@ -54,9 +62,11 @@ public class ProductController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String processAddNewProductForm(@ModelAttribute("newProduct") Product productToBeAdded, BindingResult result, HttpServletRequest request) {
+
         if(result.hasErrors()) {
             return "addProduct";
         }
+
 
         String[] suppressedFields = result.getSuppressedFields();
 
@@ -64,7 +74,7 @@ public class ProductController {
             throw new RuntimeException("Proba wiazania niedozwolonych pol: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
         }
 
-        /*
+
         MultipartFile productImage = productToBeAdded.getProductImage();
         String rootDirectory = request.getSession().getServletContext().getRealPath("/");
 
@@ -75,7 +85,7 @@ public class ProductController {
                 throw new RuntimeException("Pr�ba zapisu obrazka zako�czona niepowodzeniem", e);
             }
         }
-        */
+
 
         productService.addProduct(productToBeAdded);
         return "redirect:/products";

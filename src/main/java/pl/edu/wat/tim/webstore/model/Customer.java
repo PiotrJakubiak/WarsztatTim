@@ -2,6 +2,7 @@ package pl.edu.wat.tim.webstore.model;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,6 +23,7 @@ public class Customer implements Serializable {
     @Column(name="email")
     private String email;
 
+    @NotEmpty
     @Column(name="name")
     private String name;
 

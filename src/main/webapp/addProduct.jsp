@@ -67,7 +67,10 @@
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="category">Kategoria:</label>
 					<div class="col-lg-10">
-						<form:input id="category" path="category" type="text" class="form:input-large"/>
+						<select id="category" path="category" class="form-control" title="Wybierz kategorie">
+							<option value="Smartfon">asdasd</option>
+							<option value="Laptop">asda</option>
+						</select>
 					</div>
 				</div>
 
@@ -77,7 +80,13 @@
 						<form:input id="unitsInStock" path="unitsInStock" type="text" class="form:input-large"/>
 					</div>
 				</div>
-
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="productImage">Zdjecie produktu:</label>
+					<div class="col-lg-10">
+					<form:input name="file" path="productImage" type="file"
+								class="form:input-large"/>
+					</div>
+				</div>
 
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">

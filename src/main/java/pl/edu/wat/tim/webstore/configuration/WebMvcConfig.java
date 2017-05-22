@@ -1,5 +1,6 @@
 package pl.edu.wat.tim.webstore.configuration;
 
+import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import pl.edu.wat.tim.webstore.interceptor.AuditingInterceptor;
 import org.springframework.context.annotation.Bean;

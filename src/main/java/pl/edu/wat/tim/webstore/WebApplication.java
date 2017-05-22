@@ -28,8 +28,7 @@ import javax.sql.DataSource;
 @SpringBootApplication
 public class WebApplication extends SpringBootServletInitializer {
 
-    @Autowired
-    private DataSource dataSource;
+
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

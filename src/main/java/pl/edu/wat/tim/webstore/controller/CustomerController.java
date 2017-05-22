@@ -29,7 +29,7 @@ public class CustomerController {
     }
 
     @RequestMapping("/{id}")
-    public void getArticleById(@PathVariable("id") int id) {
+    public void getCustomerById(@PathVariable("id") int id) {
         Customer customer = customerService.getCustomerById(id);
         System.out.println(customer.toString());
 
