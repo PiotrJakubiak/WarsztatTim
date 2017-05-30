@@ -2,7 +2,6 @@ package pl.edu.wat.tim.webstore;
 
 import javax.jms.ConnectionFactory;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
@@ -21,14 +20,11 @@ import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 import pl.edu.wat.tim.webstore.jms.Email;
 
-import javax.sql.DataSource;
 
 @EnableCaching
 @EnableJms
 @SpringBootApplication
 public class WebApplication extends SpringBootServletInitializer {
-
-
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
@@ -58,9 +54,7 @@ public class WebApplication extends SpringBootServletInitializer {
         ConfigurableApplicationContext context = SpringApplication.run(WebApplication.class, args);
 
         JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
-
         // Send a message with a POJO - the template reuse the message converter
-        System.out.println("Sending an email message.");
         jmsTemplate.convertAndSend("mailbox", new Email("info@example.com", "Hello"));
     }
 

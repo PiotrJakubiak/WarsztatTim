@@ -3,9 +3,6 @@ package pl.edu.wat.tim.webstore.jms;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
-/**
- * Created by Piotr on 12.05.2017.
- */
 @Component
 public class Receiver {
 
