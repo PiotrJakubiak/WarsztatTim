@@ -1,28 +1,52 @@
 package pl.edu.wat.tim.webstore.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 
 /**
  * Created by Piotr on 09.05.2017.
  */
+@Entity
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name="product")
 public class Product {
 
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="productId")
     private int productId;
 
     @NotEmpty
     private String name;
+
+    @Min(0)
+    @Column(name="unit_price")
     private BigDecimal unitPrice;
+
+    @NotEmpty
     private String description;
+
+    @NotEmpty
     private String manufacturer;
+
+    @NotEmpty
     private String category;
+
+    @Min(0)
     private long unitsInStock;
     private long unitsInOrder;
     @JsonIgnore
+    @Transient
     private MultipartFile productImage;
 
     public int getProductId() {

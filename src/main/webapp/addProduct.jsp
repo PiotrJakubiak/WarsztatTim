@@ -16,6 +16,9 @@
 				<h1>Produkty</h1>
 				<p>Dodaj produkty</p>
 			</div>
+			<div class="pull-right" style="padding-right:50px">
+				<a href="?language=pl" >polski</a>|<a href="?language=en">angielski</a>
+			</div>
 		</div>
 	</section>
 	<section class="container">
@@ -25,7 +28,9 @@
 
 				<form:errors path="*" cssClass="alert alert-danger" element="div"/>
 				<div class="form-group">
-					<label class="control-label col-lg-2 col-lg-2" for="productId">Id produktu:</label>
+					<label class="control-label col-lg-2 col-lg-2" for="productId">
+						<spring:message code="addProduct.form.productId.label"/>
+					</label>
 					<div class="col-lg-10">
 						<form:input id="productId" path="productId" type="text" class="form:input-large"/>
 						<form:errors path="productId" cssClass="text-danger"/>
@@ -33,7 +38,9 @@
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="name">Nazwa produktu:</label>
+					<label class="control-label col-lg-2" for="name">
+						<spring:message code="addProduct.form.name.label"/>
+					</label>
 					<div class="col-lg-10">
 						<form:input id="name" path="name" type="text" class="form:input-large"/>
 						<form:errors path="name" cssClass="text-danger"/>
@@ -41,7 +48,9 @@
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="unitPrice">Cena:</label>
+					<label class="control-label col-lg-2" for="unitPrice">
+						<spring:message code="addProduct.form.unitPrice.label"/>
+					</label>
 					<div class="col-lg-10">
 						<div class="form:input-prepend">
 							<form:input id="unitPrice" path="unitPrice" type="text" class="form:input-large"/>
@@ -51,37 +60,51 @@
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="description">Opis:</label>
+					<label class="control-label col-lg-2" for="description">
+						<spring:message code="addProduct.form.description.label"/>
+					</label>
 					<div class="col-lg-10">
 						<form:textarea id="description" path="description" rows = "2"/>
+						<form:errors path="description" cssClass="text-danger"/>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="manufacturer">Producent:</label>
+					<label class="control-label col-lg-2" for="manufacturer">
+						<spring:message code="addProduct.form.manufacturer.label"/>
+					</label>
 					<div class="col-lg-10">
 						<form:input id="manufacturer" path="manufacturer" type="text" class="form:input-large"/>
+						<form:errors path="manufacturer" cssClass="text-danger"/>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="category">Kategoria:</label>
+					<label class="control-label col-lg-2" for="category">
+						<spring:message code="addProduct.form.category.label"/>
+					</label>
 					<div class="col-lg-10">
-						<select id="category" path="category" class="form-control" title="Wybierz kategorie">
+						<form:select id="category" path="category" class="form-control">
 							<option value="Smartfon">asdasd</option>
 							<option value="Laptop">asda</option>
-						</select>
+						</form:select>
+						<form:errors path="category" cssClass="text-danger"/>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="unitsInStock">Sztuk w magazynie:</label>
+					<label class="control-label col-lg-2" for="unitsInStock">
+						<spring:message code="addProduct.form.unitsInStock.label"/>
+					</label>
 					<div class="col-lg-10">
 						<form:input id="unitsInStock" path="unitsInStock" type="text" class="form:input-large"/>
+						<form:errors path="unitsInStock" cssClass="text-danger"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="productImage">Zdjecie produktu:</label>
+					<label class="control-label col-lg-2" for="productImage">
+						<spring:message code="addProduct.form.productImage.label"/>
+					</label>
 					<div class="col-lg-10">
 					<form:input name="file" path="productImage" type="file"
 								class="form:input-large"/>

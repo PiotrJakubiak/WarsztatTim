@@ -12,7 +12,6 @@ public interface CustomerRepository {
 
     List<Customer> getAllCustomers();
     Customer getCustomerById(int customerId);
-    void addCustomer(Customer customer);
-    void updateCustomer(Customer customer);
+    int addCustomer(Customer customer);
     void deleteCustomer(int customerId);
 }

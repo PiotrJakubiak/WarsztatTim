@@ -2,6 +2,7 @@ package pl.edu.wat.tim.webstore.controller;
 
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.multipart.MultipartFile;
 import pl.edu.wat.tim.webstore.model.Product;
 import pl.edu.wat.tim.webstore.service.ProductService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -60,8 +62,10 @@ public class ProductController {
         return "addProduct";
     }
 
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String processAddNewProductForm(@ModelAttribute("newProduct") Product productToBeAdded, BindingResult result, HttpServletRequest request) {
+    public String processAddNewProductForm(@ModelAttribute("newProduct") @Valid  Product productToBeAdded, BindingResult result, HttpServletRequest request) {
+
 
         if(result.hasErrors()) {
             return "addProduct";

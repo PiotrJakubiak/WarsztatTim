@@ -12,7 +12,7 @@ public interface ProductRepository {
 
     List<Product> getAllProducts();
     Product getProductById(int productID);
-    int addProduct(Product product);
+    void addProduct(Product product);
     void deleteProduct(int productId);
 
 }
