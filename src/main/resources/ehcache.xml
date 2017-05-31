@@ -3,3 +3,4 @@
     <defaultCache eternal="true" maxElementsInMemory="1000" overflowToDisk="false" />
     <cache name="messageCache" maxElementsInMemory="100" eternal="true" overflowToDisk="false" />
 </ehcache>
+

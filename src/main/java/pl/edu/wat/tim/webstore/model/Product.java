@@ -5,9 +5,11 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
+import pl.edu.wat.tim.webstore.validator.ProductId;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 import java.math.BigDecimal;
 
@@ -24,9 +26,11 @@ public class Product {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="productId")
+    @ProductId
     private int productId;
 
     @NotEmpty
+    @Size(min=4, max=50)
     private String name;
 
     @Min(0)
