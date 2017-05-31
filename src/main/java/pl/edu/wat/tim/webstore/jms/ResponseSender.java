@@ -1,8 +1,10 @@
 package pl.edu.wat.tim.webstore.jms;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import pl.edu.wat.tim.webstore.model.InventoryResponse;
 
@@ -22,6 +24,7 @@ public class ResponseSender {
         this.jmsTemplate = jmsTemplate;
     }
 
+    @Async
     void sendMessage(final InventoryResponse inventoryResponse){
         jmsTemplate.send(QUEUE, new MessageCreator() {
             @Override

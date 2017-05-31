@@ -1,14 +1,16 @@
-package pl.edu.wat.tim.webstore.jms;
+package pl.edu.wat.tim.webstore.configuration;
 
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
+import pl.edu.wat.tim.webstore.jms.ListenerErrorHandler;
 
 import javax.jms.ConnectionFactory;
 
@@ -17,7 +19,7 @@ import javax.jms.ConnectionFactory;
 @EnableJms
 public class MessagingListenerConfig {
 
-    static final String FACTORY = "listenerFactory";
+    public static final String FACTORY = "listenerFactory";
 
     //public JmsTemplate(ConnectionFactory connectionFactory)
     @Bean

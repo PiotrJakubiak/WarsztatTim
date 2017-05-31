@@ -36,4 +36,9 @@ public class JmsLoggingAspect {
         Message<Product> message = (Message<Product>)args[0];
         logger.info("ResponseReceived : " + message.getPayload());
     }
+
+    @After("Pointcuts.jmsResponseSender()")
+    void afterSender(JoinPoint joinPoint){
+        logger.info("ResponseSender : " + joinPoint.getSignature().toString());
+    }
 }

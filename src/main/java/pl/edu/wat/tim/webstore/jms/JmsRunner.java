@@ -3,17 +3,13 @@ package pl.edu.wat.tim.webstore.jms;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.messaging.Message;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import pl.edu.wat.tim.webstore.model.InventoryResponse;
 import pl.edu.wat.tim.webstore.model.Product;
 import pl.edu.wat.tim.webstore.service.ProductService;
 
-import java.util.concurrent.Future;
-
 @Component
-public class JmsRunner implements CommandLineRunner {
+public class JmsRunner{
 
     private ProductService productService;
     private OrderSender orderSender;
@@ -24,15 +20,8 @@ public class JmsRunner implements CommandLineRunner {
         this.orderSender = orderSender;
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        for(int i = 0 ; i < 20 ; i++)
-            runMessagesProcess();
-    }
-
-
-    @Async
-    private void runMessagesProcess(){
+    @Scheduled(initialDelay = 3000, fixedRate = 3000)
+    private void runMessages() throws InterruptedException{
         Product product = productService.getProductById(1);
         orderSender.sendMessage(product);
     }

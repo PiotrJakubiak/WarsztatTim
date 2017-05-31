@@ -1,9 +1,10 @@
 package pl.edu.wat.tim.webstore.jms;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.Message;
-import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
+import pl.edu.wat.tim.webstore.configuration.MessagingListenerConfig;
 import pl.edu.wat.tim.webstore.model.InventoryResponse;
 
 //Receiver is also known as a message driven POJO.
@@ -26,6 +27,6 @@ public class ResponseReceiver {
     // When none is set a JmsListenerContainerFactory bean with name jmsListenerContainerFactory is assumed to be present.
     @JmsListener(destination = QUEUE, containerFactory = MessagingListenerConfig.FACTORY)
     public void receiveMessage(final Message<InventoryResponse> message){
-        return;
+
     }
 }

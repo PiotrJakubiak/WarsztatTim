@@ -1,8 +1,12 @@
 package pl.edu.wat.tim.webstore.jms;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import pl.edu.wat.tim.webstore.model.Product;
 
@@ -14,7 +18,6 @@ import javax.jms.Session;
 public class OrderSender {
 
     private static final String QUEUE = "order-mailbox";
-
     private JmsTemplate jmsTemplate;
 
     @Autowired
@@ -29,7 +32,9 @@ public class OrderSender {
     // ActiveMQ comes up with builin implementations for Queue and Topic which can accept a String [QUEUE or Topic name] as an argument.
     //By default, Spring Boot creates a JmsTemplate configured to transmit to queues
 
-    public void sendMessage(final Product product){
+    @Async
+    public void sendMessage(final Product product) throws InterruptedException{
+        Thread.sleep(1000L);
         //Create a JMS ObjectMessage for the given Serializable object.
         jmsTemplate.send(QUEUE, new MessageCreator() {
             @Override

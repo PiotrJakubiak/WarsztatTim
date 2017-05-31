@@ -20,4 +20,8 @@ public class Pointcuts {
     public void jmsOrderReceivers(){
     }
 
+    @Pointcut ("execution(* pl.edu.wat.tim.webstore.jms.ResponseSender.*(..))")
+    public void jmsResponseSender(){
+    }
+
 }
