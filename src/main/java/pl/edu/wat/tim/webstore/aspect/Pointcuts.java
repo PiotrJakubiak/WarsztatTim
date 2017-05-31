@@ -7,4 +7,5 @@ public class Pointcuts {
     @Pointcut ("execution(* pl.edu.wat.tim.webstore..*Controller.*(..))")
     public void allControllers(){
     }
+
 }
