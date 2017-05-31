@@ -6,9 +6,13 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import pl.edu.wat.tim.webstore.jms.OrderSender;
 import pl.edu.wat.tim.webstore.model.Product;
 import pl.edu.wat.tim.webstore.service.ProductService;
+
+import java.util.concurrent.Executor;
 
 
 @EnableCaching
@@ -22,13 +26,7 @@ public class WebApplication extends SpringBootServletInitializer {
     }
 
     public static void main(String[] args) throws Exception {
-        ConfigurableApplicationContext context = SpringApplication.run(WebApplication.class, args);
-
-        ProductService productService = context.getBean(ProductService.class);
-        Product product = productService.getProductById(1);
-        OrderSender orderSender = context.getBean(OrderSender.class);
-        orderSender.sendMessage(product);
+        SpringApplication.run(WebApplication.class, args);
     }
-
 }
 

@@ -26,5 +26,6 @@ public class ResponseReceiver {
     // When none is set a JmsListenerContainerFactory bean with name jmsListenerContainerFactory is assumed to be present.
     @JmsListener(destination = QUEUE, containerFactory = MessagingListenerConfig.FACTORY)
     public void receiveMessage(final Message<InventoryResponse> message){
+        return;
     }
 }
