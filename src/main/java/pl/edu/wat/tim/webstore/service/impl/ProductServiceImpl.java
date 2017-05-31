@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * Created by Piotr on 09.05.2017.
  */
+
 @Service
 public class ProductServiceImpl implements ProductService {
 
