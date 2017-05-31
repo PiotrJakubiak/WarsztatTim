@@ -22,7 +22,7 @@ public class ResponseReceiver {
     //containerFactory attribute defining the name of the JmsListenerContainerFactory bean to use.
     // When none is set a JmsListenerContainerFactory bean with name jmsListenerContainerFactory is assumed to be present.
     @JmsListener(destination = QUEUE, containerFactory = MessagingListenerConfig.FACTORY)
-    public void receiveMessage(Email email) {
-        System.out.println("Received <" + email + ">");
+    public void receiveMessage() {
+
     }
 }

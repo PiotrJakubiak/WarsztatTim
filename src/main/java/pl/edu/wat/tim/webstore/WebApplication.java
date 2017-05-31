@@ -2,15 +2,11 @@ package pl.edu.wat.tim.webstore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import pl.edu.wat.tim.webstore.jms.Email;
 import pl.edu.wat.tim.webstore.jms.OrderSender;
-import pl.edu.wat.tim.webstore.jms.ResponseSender;
 import pl.edu.wat.tim.webstore.model.Product;
 import pl.edu.wat.tim.webstore.service.ProductService;
 
@@ -29,7 +25,7 @@ public class WebApplication extends SpringBootServletInitializer {
         ConfigurableApplicationContext context = SpringApplication.run(WebApplication.class, args);
 
         ProductService productService = context.getBean(ProductService.class);
-        Product product = productService.getProductById(0);
+        Product product = productService.getProductById(1);
         OrderSender orderSender = context.getBean(OrderSender.class);
         orderSender.sendMessage(product);
     }
