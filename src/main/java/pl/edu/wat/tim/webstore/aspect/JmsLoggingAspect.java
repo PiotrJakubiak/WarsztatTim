@@ -10,13 +10,12 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class LoggingAspect {
+public class JmsLoggingAspect {
 
-    private Logger logger = Logger.getLogger(LoggingAspect.class.getName());
+    private Logger logger = Logger.getLogger(JmsLoggingAspect.class.getName());
 
-    @Before("execution(* pl.edu.wat.tim.webstore..*.*(..))")
+    @Before("execution(* pl.edu.wat.tim.webstore.jms.*.*(..))")
     void entering(JoinPoint joinPoint){
         logger.warn("Entering: " + joinPoint.getStaticPart().getSignature().toString());
     }
-
 }

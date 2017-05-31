@@ -1,10 +1,12 @@
 package pl.edu.wat.tim.webstore.configuration;
 
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -20,7 +22,7 @@ import java.util.Locale;
  * Created by Piotr on 10.05.2017.
  */
 @Configuration
-public class WebMvcConfig extends WebMvcConfigurerAdapter {
+class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     AuditingInterceptor AuditingInterceptor () {

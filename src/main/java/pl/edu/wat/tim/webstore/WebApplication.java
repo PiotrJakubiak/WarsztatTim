@@ -7,6 +7,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import pl.edu.wat.tim.webstore.jms.Email;
 import pl.edu.wat.tim.webstore.jms.OrderSender;
 import pl.edu.wat.tim.webstore.jms.ResponseSender;
@@ -15,7 +16,7 @@ import pl.edu.wat.tim.webstore.service.ProductService;
 
 
 @EnableCaching
-@SpringBootApplication(exclude = {WebMvcAutoConfiguration.class})
+@SpringBootApplication
 public class WebApplication extends SpringBootServletInitializer {
 
 
@@ -27,10 +28,10 @@ public class WebApplication extends SpringBootServletInitializer {
     public static void main(String[] args) throws Exception {
         ConfigurableApplicationContext context = SpringApplication.run(WebApplication.class, args);
 
-        ProductService productService = (ProductService) context.getBean("productService");
+        ProductService productService = context.getBean(ProductService.class);
         Product product = productService.getProductById(0);
         OrderSender orderSender = context.getBean(OrderSender.class);
-        orderSender.sendMessage(new Email("info@example.com", "Hello"));
+        orderSender.sendMessage(product);
     }
 
 }

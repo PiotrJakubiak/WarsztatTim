@@ -22,7 +22,7 @@ public class OrderSender {
         this.jmsTemplate = jmsTemplate;
     }
 
-    public void sendMessage(final Email product){
+    public void sendMessage(final Product product){
         jmsTemplate.send(QUEUE, new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {

@@ -9,14 +9,14 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class ExceptionAspect {
+public class JmsExceptionAspect {
 
-    private Logger logger = Logger.getLogger(LoggingAspect.class.getName());
+    private Logger logger = Logger.getLogger(JmsLoggingAspect.class.getName());
 
     @AfterThrowing(pointcut = "Pointcuts.allControllers()", throwing = "exception")
-    public void logException(JoinPoint joinPoint, RuntimeException exception)
+    public void logException(JoinPoint joinPoint, Exception exception)
     {
-        logger.error("Wyjątek 'runtime' w controlerze: " + joinPoint.getSignature().toString()
-                + " exception: " + exception.getMessage());
+        logger.error("Wyjątek w controlerze: " + joinPoint.getSignature().toString()
+                + " : " + exception.getCause());
     }
 }

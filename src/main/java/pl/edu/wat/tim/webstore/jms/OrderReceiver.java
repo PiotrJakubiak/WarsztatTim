@@ -1,9 +1,7 @@
 package pl.edu.wat.tim.webstore.jms;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
-import org.springframework.jms.core.JmsTemplate;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
@@ -14,17 +12,12 @@ public class OrderReceiver {
 
     private static final String QUEUE = "order-mailbox";
 
-    private JmsTemplate jmsTemplate;
+    @JmsListener(destination = QUEUE, containerFactory = MessagingListenerConfig.FACTORY)
+    public void receiveMessage(final Message<Product> message){
+        MessageHeaders headers =  message.getHeaders();
+        System.out.println("Application : headers received : {}" + headers.toString());
 
-    @Autowired
-    public OrderReceiver(JmsTemplate jmsTemplate){
-        this.jmsTemplate = jmsTemplate;
-    }
-
-    @JmsListener(destination = QUEUE)
-    public void receiveMessage(final Email message){
-//        MessageHeaders headers =  message.getHeaders();
-//        System.out.println("Application : headers received : {}" + headers.toString());
-        System.out.println("Received <" + message + ">");
+        Product product = message.getPayload();
+        System.out.println("Application : product : {}" + product);
     }
 }
