@@ -26,12 +26,7 @@ public class OrderReceiver {
 
     @JmsListener(destination = QUEUE, containerFactory = MessagingListenerConfig.FACTORY)
     public void receiveMessage(final Message<Product> message){
-        MessageHeaders headers =  message.getHeaders();
-        System.out.println("Application : headers received : {}" + headers.toString());
-
         Product product = message.getPayload();
-        System.out.println("Application : Product :" + product.toString());
-
         InventoryResponse response = orderService.processOrder(product);
         responseSender.sendMessage(response);
     }

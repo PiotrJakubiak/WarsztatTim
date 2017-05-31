@@ -26,10 +26,5 @@ public class ResponseReceiver {
     // When none is set a JmsListenerContainerFactory bean with name jmsListenerContainerFactory is assumed to be present.
     @JmsListener(destination = QUEUE, containerFactory = MessagingListenerConfig.FACTORY)
     public void receiveMessage(final Message<InventoryResponse> message){
-        MessageHeaders headers =  message.getHeaders();
-        System.out.println("Application : headers received : {}" + headers.toString());
-
-        InventoryResponse inventoryResponse = message.getPayload();
-        System.out.println("Application : InventoryResponse :" + inventoryResponse.toString());
     }
 }
