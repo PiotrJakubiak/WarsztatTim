@@ -2,9 +2,7 @@ package pl.edu.wat.tim.webstore.jms;
 
 import java.io.Serializable;
 
-/**
- * Created by Piotr on 12.05.2017.
- */
+
 public class Email implements Serializable{
 
     private static final long serialVersionUID = -295422703255886286L;
