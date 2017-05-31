@@ -13,4 +13,7 @@ public interface ProductService {
     Product getProductById(int productID);
     void addProduct(Product product);
     void deleteProduct(int productId);
+
+    void sendProduct(Product product);
+
 }

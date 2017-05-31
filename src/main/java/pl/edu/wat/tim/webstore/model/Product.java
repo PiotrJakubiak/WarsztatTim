@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -20,7 +21,7 @@ import java.math.BigDecimal;
 @Cacheable
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name="product")
-public class Product {
+public class Product implements Serializable {
 
 
     @Id
@@ -127,4 +128,14 @@ public class Product {
         this.productImage = productImage;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", unitsInStock=" + unitsInStock +
+                ", unitsInOrder=" + unitsInOrder +
+                '}';
+    }
 }

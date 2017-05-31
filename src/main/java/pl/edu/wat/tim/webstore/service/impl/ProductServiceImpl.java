@@ -1,5 +1,7 @@
 package pl.edu.wat.tim.webstore.service.impl;
 
+import pl.edu.wat.tim.webstore.jms.ResponseReceiver;
+import pl.edu.wat.tim.webstore.jms.ResponseSender;
 import pl.edu.wat.tim.webstore.model.Product;
 import pl.edu.wat.tim.webstore.repository.ProductRepository;
 import pl.edu.wat.tim.webstore.service.ProductService;
@@ -17,6 +19,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+//    @Autowired
+//    private ResponseSender responseSender;
 
     @Override
     public List<Product> getAllProducts() {
@@ -37,5 +42,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(int productId) {
         productRepository.deleteProduct(productId);
+    }
+
+    @Override
+    public void sendProduct(Product product) {
+//        responseSender.sendMessage(product);
     }
 }
