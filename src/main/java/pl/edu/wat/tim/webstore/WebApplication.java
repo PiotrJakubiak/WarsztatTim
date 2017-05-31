@@ -5,6 +5,7 @@ import javax.jms.ConnectionFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
+import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
@@ -18,12 +19,13 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
+import pl.edu.wat.tim.webstore.configuration.WebMvcConfig;
 import pl.edu.wat.tim.webstore.jms.Email;
 
 
 @EnableCaching
 @EnableJms
-@SpringBootApplication
+@SpringBootApplication(exclude = {WebMvcAutoConfiguration.class})
 public class WebApplication extends SpringBootServletInitializer {
 
     @Override

@@ -38,6 +38,7 @@ public class ProductController {
     @RequestMapping
     public String list(Model model) {
         model.addAttribute("products", productService.getAllProducts());
+//        throw new RuntimeException("Wyrzucam RunTimeException!");
         return "products";
     }
 
