@@ -22,7 +22,14 @@ public class OrderSender {
         this.jmsTemplate = jmsTemplate;
     }
 
+    // Send a message with a POJO - the template reuse the message converter
+    //Two beans that you don’t see defined are JmsTemplate and ConnectionFactory. These are created automatically by Spring Boot.
+    // In this case, the ActiveMQ broker runs embedded.
+    //Destination: Destinations needs to be configured for both sending and receiving ends.
+    // ActiveMQ comes up with builin implementations for Queue and Topic which can accept a String [QUEUE or Topic name] as an argument.
+    //By default, Spring Boot creates a JmsTemplate configured to transmit to queues
     public void sendMessage(final Product product){
+        //Create a JMS ObjectMessage for the given Serializable object.
         jmsTemplate.send(QUEUE, new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
@@ -30,4 +37,6 @@ public class OrderSender {
             }
         });
     }
+
+
 }

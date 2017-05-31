@@ -124,4 +124,14 @@ public class Product implements Serializable {
         this.productImage = productImage;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", unitsInStock=" + unitsInStock +
+                ", unitsInOrder=" + unitsInOrder +
+                '}';
+    }
 }
