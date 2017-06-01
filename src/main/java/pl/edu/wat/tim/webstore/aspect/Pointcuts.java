@@ -24,4 +24,8 @@ public class Pointcuts {
     public void jmsResponseSender(){
     }
 
+    @Pointcut ("execution(void pl.edu.wat.tim.webstore.jms.JmsRunner.runMessages())")
+    public void jmsRunner(){
+    }
+
 }

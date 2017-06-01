@@ -20,7 +20,7 @@ public class JmsRunner{
     }
 
     @Scheduled(initialDelay = 3000, fixedRate = 3000)
-    private void runMessages() throws InterruptedException{
+    public void runMessages() throws InterruptedException{
         Product product = productService.getProductById(1);
         orderSender.sendMessage(product);
     }
